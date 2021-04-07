@@ -26,22 +26,81 @@
                             'is-invalid': (problemeForm.get('prenom').touched || 
                             problemeForm.get('prenom').dirty) &&
                             (!problemeForm.get('prenom').valid )}"/>   
+
                             <span class="form-text" *ngIf="(problemeForm.get('prenom').touched ||
                                     problemeForm.get('prenom').dirty) &&
-                                    problemeForm.get('prenom').errors">        
-                                <span *ngIf="problemeForm.get('prenom').errors!.minlength">
+                                    problemeForm.get('prenom').errors">     
+                                    <span *ngIf="problemeForm.get('prenom').errors.required">
+                                        <small class="text-muted">
+                                        Merci de saisir votre prénom.
+                                        </small>
+                                    </span>
+                                    <span *ngIf="problemeForm.get('prenom').errors">
                                     <small class="text-muted">
                                     Veuillez entrer plus de caractères.
                                     </small>
                                 </span>
-                                <span *ngIf="(problemeForm.get('prenom').touched ||
-                                problemeForm.get('prenom').dirty) && !problemeForm.get('prenom').errors!.minlength">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="nomId" class="col-md-2 col-form-label text-right">Nom :</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" 
+                            id="nomId" 
+                            type="text" 
+                            placeholder="Votre nom ici (obligatoire)" 
+                            formControlName="nom"               
+                            [ngClass]="{'is-valid': (problemeForm.get('nom').touched || 
+                            problemeForm.get('nom').dirty) &&
+                            (problemeForm.get('nom').valid),
+                            'is-invalid': (problemeForm.get('nom').touched || 
+                            problemeForm.get('nom').dirty) &&
+                            (!problemeForm.get('nom').valid )}" />   
+
+                            <span class="form-text" *ngIf="(problemeForm.get('nom').touched ||
+                                    problemeForm.get('nom').dirty) &&
+                                    problemeForm.get('nom').errors">     
+                                    <span *ngIf="problemeForm.get('nom').errors.required">
+                                        <small class="text-muted">
+                                            Merci de saisir votre nom de famille.
+                                        </small>
+                                    </span>
+                                    <span *ngIf="problemeForm.get('nom').errors.maxlength">
                                     <small class="text-muted">
-                                    Merci de saisir votre prénom.
+                                        Veuillez entrer moins de caractères 
                                     </small>
                                 </span>
                             </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="TypeProblemeId" class="col-md-2 col-form-label text-right">Type de problème :</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" 
+                            id= "TypeProblemeId"
+                            formControlName= "typeprobleme"
+                            [ngClass]="{'is-valid': (problemeForm.get('typeprobleme').touched || 
+                            problemeForm.get('typeprobleme').dirty) &&
+                            (problemeForm.get('typeprobleme').valid),
+                            'is-invalid': (problemeForm.get('typeprobleme').touched || 
+                            problemeForm.get('typeprobleme').dirty) &&
+                            (!problemeForm.get('typeprobleme').valid )}">
                             
+                            
+                                <option value="">Sélectionner un type de problème (obligatoire)</option>
+                                <option *ngFor="let cat of typeDeProbleme" [value]="cat.id">{{cat.descriptionTypeProbleme}}</option>
+                        </select>
+                        <span class="form-text" *ngIf="(problemeForm.get('typeprobleme').touched ||
+                                    problemeForm.get('typeprobleme').dirty) &&
+                                    problemeForm.get('typeprobleme').errors">     
+                                    <span *ngIf="problemeForm.get('typeprobleme').errors.required">
+                                        <small class="text-muted">
+                                            Merci de sélectionner un type de problème.
+                                        </small>
+                                    </span>
+                                    
+                            </span>
                         </div>
                     </div>
                 </form>
