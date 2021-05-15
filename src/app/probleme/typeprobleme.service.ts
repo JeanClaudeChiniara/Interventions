@@ -9,7 +9,9 @@ import {catchError, tap} from 'rxjs/operators'
 })
 export class TypeproblemeService {
 
-  private URLDonnes = 'api/typesprobleme'
+  //private URLDonnes = 'https://localhost:5001/Intervention';
+  private URLDonnes = 'https://interventionsjcc2021.azurewebsites.net/Intervention';
+
 
   constructor(private http: HttpClient) { }
 

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ProblemeService } from './probleme/probleme.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './accueil/accueil.component';
@@ -22,9 +22,9 @@ import { ProblemeData } from './probleme/probleme-data';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule .forRoot(ProblemeData, { delay: 1000})
+    //HttpClientInMemoryWebApiModule .forRoot(ProblemeData, { delay: 1000})
   ],
-  providers: [],
+  providers: [ProblemeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
